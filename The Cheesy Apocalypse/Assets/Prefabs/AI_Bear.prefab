@@ -758,8 +758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed95522b0b8f4364592ea155f5cbdab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heatlhPoints: 20
-  deathEffect: {fileID: 0}
+  heatlhPoints: 1
+  deathEffect: {fileID: 1225468296341162, guid: 9f883cbcbfff16e499fc04ea0174e151,
+    type: 2}
 --- !u!136 &136171762510151358
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -770,9 +771,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!195 &195955740647035672
 NavMeshAgent:
   m_ObjectHideFlags: 1
