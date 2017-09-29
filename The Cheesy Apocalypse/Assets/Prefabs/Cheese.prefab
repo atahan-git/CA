@@ -151,6 +151,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4177743717458654}
+  - component: {fileID: 64963784685084724}
   m_Layer: 0
   m_Name: cheese
   m_TagString: Untagged
@@ -167,7 +168,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4844273603105606}
   - component: {fileID: 54546914104052000}
-  - component: {fileID: 64102480661446994}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: Untagged
@@ -215,7 +215,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654857031565672}
-  m_LocalRotation: {x: 0.18664844, y: -0.37026304, z: -0.03898597, w: 0.9091468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -223,7 +223,7 @@ Transform:
   - {fileID: 4804044622976280}
   m_Father: {fileID: 4844273603105606}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 18.09, y: -46.350002, z: -12.708}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4366026129538444
 Transform:
   m_ObjectHideFlags: 1
@@ -356,7 +356,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1717137539448886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.35, y: 0, z: -7.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4177743717458654}
@@ -703,17 +703,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64102480661446994
+--- !u!64 &64963784685084724
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717137539448886}
+  m_GameObject: {fileID: 1654857031565672}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 16c5193f452a9ed4689fdb9df2a83f71, type: 3}
