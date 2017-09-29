@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
 
         if (healthPoints <= 0)
         {
-            Instantiate(Cheese, new Vector3(0, 5, 0), transform.rotation);
+            Instantiate(Cheese, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), transform.rotation);
         }
 
         MovementScript.enabled = false;
