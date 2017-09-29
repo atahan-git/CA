@@ -1,29 +1,42 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour
+{
+    RigidFPC MovementScript;
 
-	public float heatlhPoints = 100;
+    public GameObject Cheese;
 
-	// Use this for initialization
-	void Start () {
+    public int healthPoints = 1;
 
-	}
+    public bool haveCheese = true;
 
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+        MovementScript = GetComponent<RigidFPC>();
+    }
 
-	}
+    public void Damage()
+    {
+        Damage(1);
+    }
 
-	public void Damage (float amount){
-		heatlhPoints -= amount;
+    public void Damage(int amount)
+    {
+		healthPoints -= amount;
 
-		if (heatlhPoints <= 0)
-			Die ();
-	}
+        if (healthPoints <= 0)
+        {
+            Instantiate(Cheese, new Vector3(0, 5, 0), transform.rotation);
+        }
 
-	void Die(){
+        MovementScript.enabled = false;
 
-	}
+        Invoke("RemoveStun", 1);
+    }
+
+    void RemoveStun()
+    {
+        MovementScript.enabled = true;
+    }
 }
