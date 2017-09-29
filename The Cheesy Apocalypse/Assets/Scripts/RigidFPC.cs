@@ -14,30 +14,27 @@ public class RigidFPC : MonoBehaviour
 
     void FixedUpdate()
     {
-		if(Grounded)
+        Vector3 Keyinput = new Vector3(Input.GetAxis("Horizontal") * Speed.z, GetComponent<Rigidbody>().velocity.y, Input.GetAxis("Vertical") * Speed.x);
+
+        if (Keyinput.x != 0 && Keyinput.z != 0)
         {
-            Vector3 Keyinput = new Vector3(Input.GetAxis("Horizontal") * Speed.z, GetComponent<Rigidbody>().velocity.y, Input.GetAxis("Vertical") * Speed.x);
+            Keyinput.x /= SidewaysMovementContoller;
+            Keyinput.z /= SidewaysMovementContoller;
+        }
 
-            if (Keyinput.x != 0 && Keyinput.z != 0)
-            {
-				Keyinput.x /= SidewaysMovementContoller;
-				Keyinput.z /= SidewaysMovementContoller;			
-			}
+        if (Keyinput.z < 0)
+        {
+            Keyinput.z /= BackwardsSlower;
+        }
 
-            if(Keyinput.z < 0)
-            {
-                Keyinput.z /= BackwardsSlower;
-            }
+        Vector3 LocalVelocity = transform.TransformDirection(Keyinput);
+        LocalVelocity = LocalVelocity - GetComponent<Rigidbody>().velocity;
+        LocalVelocity /= StartingSmoothness;
+        GetComponent<Rigidbody>().velocity += LocalVelocity;
 
-			Vector3 LocalVelocity = transform.TransformDirection(Keyinput);
-			LocalVelocity = LocalVelocity - GetComponent<Rigidbody>().velocity;
-			LocalVelocity /= StartingSmoothness;
-			GetComponent<Rigidbody>().velocity += LocalVelocity;
-
-            if (Input.GetKeyDown(KeyCode.Space) && GetComponent<Rigidbody>().velocity.y < Speed.y - 1)
-            {
-                GetComponent<Rigidbody>().velocity += new Vector3(0, Speed.y, 0);
-            }
+        if (Input.GetKeyDown(KeyCode.Space) && Grounded && GetComponent<Rigidbody>().velocity.y < Speed.y - 1)
+        {
+            GetComponent<Rigidbody>().velocity += new Vector3(0, Speed.y, 0);
         }
 	}
 
