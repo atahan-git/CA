@@ -20,7 +20,7 @@ public class BulletScript : MonoBehaviour {
 		myCol.enabled = false;
 		Invoke ("EnableCollider", 0.1f);
 
-		GetComponent<Rigidbody> ().AddRelativeForce (0, 0, 400);
+		GetComponent<Rigidbody> ().AddRelativeForce (0, 0, 600);
 	}
 
 	void EnableCollider (){
@@ -30,19 +30,19 @@ public class BulletScript : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (isLethal) {
-			GetComponent<Rigidbody> ().AddForce (0f, Physics.gravity / 2f, 0f);
+			GetComponent<Rigidbody> ().AddForce (0f, Physics.gravity.y / 5f, 0f);
 		} else {
-			GetComponent<Rigidbody> ().AddForce (0f, Physics.gravity, 0f);
+			GetComponent<Rigidbody> ().AddForce (0f, Physics.gravity.y, 0f);
 		}
 	}
 
-	void OnCollisionEnter (Collider col){
+	void OnCollisionEnter (Collision col){
 		if (isLethal) {
 			isLethal = false;
 			myTrail.enabled = false;
 			rend.material.color = new Color (0.6f, 0.6f, 0.6f);
 
-			IDamageable myTarget = GetDamageable (col.gameObject);
+			IDamageable myTarget = GetDamageable (col.collider.gameObject);
 
 			if (myTarget != null) {
 				myTarget.Damage ();

@@ -18,7 +18,7 @@ public class AI_Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (player.position - transform.position), 5 * Time.deltaTime);
 	}
 
 	void AgentUpdate (){
