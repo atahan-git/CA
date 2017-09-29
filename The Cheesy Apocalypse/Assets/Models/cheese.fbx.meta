@@ -16,6 +16,7 @@ ModelImporter:
     100016: Sphere_4
     100018: Sphere_5
     100020: Sphere_6
+    100022: Boole
     400000: //RootNode
     400002: Connect
     400004: Null
@@ -27,6 +28,7 @@ ModelImporter:
     400016: Sphere_4
     400018: Sphere_5
     400020: Sphere_6
+    400022: Boole
     2300000: Connect
     2300002: Sphere
     2300004: Sphere_1
