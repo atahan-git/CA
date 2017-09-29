@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 54691344128398574}
   - component: {fileID: 114864339770205116}
   - component: {fileID: 65980427893446740}
+  - component: {fileID: 208508566019012502}
   m_Layer: 0
   m_Name: Raf
   m_TagString: Untagged
@@ -549,3 +550,18 @@ MonoBehaviour:
   heatlhPoints: 20
   deathEffect: {fileID: 1225468296341162, guid: 9f883cbcbfff16e499fc04ea0174e151,
     type: 2}
+--- !u!208 &208508566019012502
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830058392074418}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.1, y: 1.15, z: 0.44}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 1.15, z: 0}
+  m_TimeToStationary: 0.5
