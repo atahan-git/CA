@@ -6,10 +6,15 @@ ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
+    100002: piramit
     400000: //RootNode
+    400002: piramit
     2300000: //RootNode
+    2300002: piramit
     3300000: //RootNode
+    3300002: piramit
     4300000: Cylinder
+    4300002: piramit
   materials:
     importMaterials: 1
     materialName: 0
