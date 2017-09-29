@@ -16,6 +16,7 @@ public class AI_Shoot : MonoBehaviour {
 	
 
 	void Shoot (){
-
+		Instantiate (bullet, barrelPos.position, barrelPos.rotation);
+		Invoke ("Shoot", Random.Range(1f,3f));
 	}
 }

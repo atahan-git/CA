@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hp : MonoBehaviour {
+public class Hp : MonoBehaviour, IDamageable {
 
-	public float heatlhPoints = 20;
+	public int heatlhPoints = 20;
 
 	public GameObject deathEffect;
 
@@ -18,7 +18,11 @@ public class Hp : MonoBehaviour {
 		
 	}
 
-	public void Damage (float amount){
+	public void Damage (){
+		Damage (1);
+	}
+
+	public void Damage (int amount){
 		heatlhPoints -= amount;
 
 		if (heatlhPoints <= 0)
@@ -29,4 +33,10 @@ public class Hp : MonoBehaviour {
 		Instantiate (deathEffect, transform.position, Quaternion.identity);
 		Destroy (gameObject);
 	}
+}
+
+
+public interface IDamageable{
+	void Damage ();
+	void Damage (int amount);
 }
