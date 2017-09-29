@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RigidFPC : MonoBehaviour
 {
-	public Vector3 Speed = new Vector3(6, 4, 5);
+	public Vector3 Speed;
 
-	public float SidewaysMovementContoller = 1.1f;
-    public float StartingSmoothness = 1.2f;
-    public float BackwardsSpeedMultiplayer = 1.7f;
+    public GameObject Visuals;
+
+	public float SidewaysMovementContoller;
+    public float StartingSmoothness;
 
     bool Grounded;
+
+    
 
     void FixedUpdate()
     {
@@ -22,11 +23,6 @@ public class RigidFPC : MonoBehaviour
             Keyinput.z /= SidewaysMovementContoller;
         }
 
-        if (Keyinput.z < 0)
-        {
-            Keyinput.z *= BackwardsSpeedMultiplayer;
-        }
-
         Vector3 LocalVelocity = transform.TransformDirection(Keyinput);
         LocalVelocity = LocalVelocity - GetComponent<Rigidbody>().velocity;
         LocalVelocity /= StartingSmoothness;
@@ -36,7 +32,29 @@ public class RigidFPC : MonoBehaviour
         {
             GetComponent<Rigidbody>().velocity += new Vector3(0, Speed.y, 0);
         }
-	}
+
+        //visuals
+        Vector3 LookPosition = Vector3.zero;
+
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            LookPosition.z = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            LookPosition.z = -1;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            LookPosition.x = -1;
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            LookPosition.x = 1;
+        }
+
+        Visuals.transform.LookAt(LookPosition + Visuals.transform.position);
+    }
 
 	void OnTriggerStay()
     {

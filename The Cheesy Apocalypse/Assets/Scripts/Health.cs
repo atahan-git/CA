@@ -5,6 +5,8 @@ public class Health : MonoBehaviour
 {
     RigidFPC MovementScript;
 
+    Rigidbody PlayerRigidbody;
+
     public GameObject Cheese;
 
     public int healthPoints = 1;
@@ -14,6 +16,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         MovementScript = GetComponent<RigidFPC>();
+        PlayerRigidbody = GetComponent<Rigidbody>();
     }
 
     public void Damage()
@@ -28,6 +31,9 @@ public class Health : MonoBehaviour
         if (healthPoints <= 0)
         {
             Instantiate(Cheese, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), transform.rotation);
+
+            PlayerRigidbody.velocity = Vector3.zero;
+            PlayerRigidbody.angularVelocity = Vector3.zero;
         }
 
         MovementScript.enabled = false;
