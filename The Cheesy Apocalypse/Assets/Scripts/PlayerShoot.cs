@@ -1,16 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour {
+public class PlayerShoot : MonoBehaviour
+{
+    public Transform barrelPos;
 
-	// Use this for initialization
-	void Start () {
-		
+    public GameObject bullet;
+
+    void Update()
+    {
+		if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    void Shoot()
+    {
+        Instantiate(bullet, barrelPos.position, barrelPos.rotation);
+        Invoke("Shoot", Random.Range(1f, 3f));
+    }
 }
