@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AI_Movement : MonoBehaviour {
 
-	public Transform player;
+	Transform player;
 	NavMeshAgent agent;
 
 
