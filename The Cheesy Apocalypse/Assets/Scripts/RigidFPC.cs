@@ -8,7 +8,7 @@ public class RigidFPC : MonoBehaviour
 
 	public float SidewaysMovementContoller = 1.1f;
     public float StartingSmoothness = 1.2f;
-    public float BackwardsSlower = 1.7f;
+    public float BackwardsSpeedMultiplayer = 1.7f;
 
     bool Grounded;
 
@@ -24,7 +24,7 @@ public class RigidFPC : MonoBehaviour
 
         if (Keyinput.z < 0)
         {
-            Keyinput.z /= BackwardsSlower;
+            Keyinput.z *= BackwardsSpeedMultiplayer;
         }
 
         Vector3 LocalVelocity = transform.TransformDirection(Keyinput);
