@@ -32,6 +32,8 @@ public class Health : MonoBehaviour, IDamageable
         {
             Instantiate(Cheese, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), transform.rotation);
 
+            haveCheese = false;
+
             PlayerRigidbody.velocity = Vector3.zero;
             PlayerRigidbody.angularVelocity = Vector3.zero;
         }

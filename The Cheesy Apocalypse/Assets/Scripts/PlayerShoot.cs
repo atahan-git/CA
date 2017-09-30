@@ -8,7 +8,7 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
-		if(Input.GetKeyDown(KeyCode.Space))
+		if(Input.GetKeyDown(KeyCode.Z))
         {
             Shoot();
         }
@@ -17,6 +17,5 @@ public class PlayerShoot : MonoBehaviour
     void Shoot()
     {
         Instantiate(bullet, barrelPos.position, barrelPos.rotation);
-        Invoke("Shoot", Random.Range(1f, 3f));
     }
 }

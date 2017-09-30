@@ -36,24 +36,27 @@ public class RigidFPC : MonoBehaviour
         //visuals
         Vector3 LookPosition = Vector3.zero;
 
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if(Input.GetKey(KeyCode.UpArrow))
         {
             LookPosition.z = 1;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             LookPosition.z = -1;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             LookPosition.x = -1;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             LookPosition.x = 1;
         }
 
+
         Visuals.transform.LookAt(LookPosition + Visuals.transform.position);
+        if(LookPosition.magnitude > 0)
+        Visuals.transform.Rotate(0, -45, 0);
     }
 
 	void OnTriggerStay()
