@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,7 +15,7 @@ public class AI_Movement : MonoBehaviour {
 	public enum AIMode {attackPlayer, chaseCheese, escapePlayer};
 	public AIMode activeMode = AIMode.attackPlayer;
 
-	public float AIDelay = 0f;
+	float AIDelay = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -47,15 +46,25 @@ public class AI_Movement : MonoBehaviour {
 			agent.enabled = false;
 		} else {
 			agent.enabled = true;
+			if (target == null) {
+				if (activeMode == AIMode.chaseCheese) {
+					activeMode = AIMode.attackPlayer;
+					target = player;
+					agent.stoppingDistance = stoppingdist;
+				}
+			}
 			agent.SetDestination (target.position);
 		}
 	}
 
 
 	public static float distance;
-	delegate void BasicDelegate(bool val);
-	BasicDelegate BestOne;
+	public delegate void BasicDelegate(bool val);
+	public static BasicDelegate BestOne;
 	void CheckCheeseChase (){
+		if (transform == null)
+			return;
+
 		float myDist = Vector3.Distance(transform.position, Health.s.activeCheese.transform.position);
 
 		if (myDist < distance) {
@@ -64,6 +73,8 @@ public class AI_Movement : MonoBehaviour {
 			BestOne = ChaseCheese;
 			BestOne (true);
 		}
+
+		distance = myDist;
 	}
 
 	void StopChase (){
@@ -79,6 +90,7 @@ public class AI_Movement : MonoBehaviour {
 			activeMode = AIMode.chaseCheese;
 			agent.stoppingDistance = 0;
 		} else {
+			//print ("s chase "+gameObject.name);
 			target = player;
 			activeMode = AIMode.attackPlayer;
 			agent.stoppingDistance = stoppingdist;
@@ -88,18 +100,24 @@ public class AI_Movement : MonoBehaviour {
 	void OnDestroyed (){
 		Health.s.chaseCheese -= CheckCheeseChase;
 		Health.s.stopChase -= StopChase;
+
+		DropCheese ();
+
+		if (activeMode == AIMode.chaseCheese)
+			Health.s.chaseCheese.Invoke ();
 	}
-		
+
+	public GameObject Cheese;
 	public GameObject MyCheese;
 
-	public bool haveCheese = true;
+	public bool haveCheese = false;
 
 
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.CompareTag("Cheese"))
 		{
-			AIDelay = 2f;
+			AIDelay = 1f;
 			Destroy(collision.gameObject);
 			haveCheese = true;
 			MyCheese.SetActive(true);
@@ -108,6 +126,22 @@ public class AI_Movement : MonoBehaviour {
 			agent.speed = agent.speed / 2f;
 
 			target = escapeSpot;
+		}
+	}
+
+	public void DropCheese (){
+		if (haveCheese) {
+			GameObject aCheese = (GameObject)Instantiate (Cheese, new Vector3 (transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+			Vector3 shootVector = Quaternion.Euler (0, Random.Range (0, 360), 0) * new Vector3 (150, 400, 0);
+			aCheese.GetComponent<Rigidbody> ().AddForce (shootVector);
+
+			haveCheese = false;
+
+			activeMode = AIMode.attackPlayer;
+			target = player;
+			agent.stoppingDistance = stoppingdist;
+
+			AIDelay = 2f;
 		}
 	}
 }
