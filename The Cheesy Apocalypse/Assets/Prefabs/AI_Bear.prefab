@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 114963860295054564}
   - component: {fileID: 136171762510151358}
   - component: {fileID: 54227385609618488}
+  - component: {fileID: 114909407347165732}
   m_Layer: 0
   m_Name: AI_Bear
   m_TagString: Enemy
@@ -782,7 +783,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1359399188059606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.38161, y: 4.3059396e-17, z: -1.9392227}
+  m_LocalPosition: {x: -2, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4939569607934532}
@@ -1537,6 +1538,17 @@ MonoBehaviour:
   Cheese: {fileID: 1922033677171126, guid: ada24836de6d1204a919c1cf3ff4b3c3, type: 2}
   MyCheese: {fileID: 1805362656009448}
   haveCheese: 1
+--- !u!114 &114909407347165732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1359399188059606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec9e4497ecf32b469e0cdd04f3bb09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114963860295054564
 MonoBehaviour:
   m_ObjectHideFlags: 1

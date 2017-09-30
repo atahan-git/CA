@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cheese
   - EscapeSpot
+  - Enemy
   layers:
   - Default
   - TransparentFX
