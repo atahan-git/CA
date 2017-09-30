@@ -5,7 +5,7 @@ public class ColorChanger : MonoBehaviour
 {
     public Text MyText;
 
-    public float Delay;
+    public float Delay = 0.5f;
 
     void Start()
     {
