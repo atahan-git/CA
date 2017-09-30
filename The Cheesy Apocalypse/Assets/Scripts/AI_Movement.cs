@@ -33,6 +33,6 @@ public class AI_Movement : MonoBehaviour {
 	public static float distance;
 	public static Delegate bestOne;
 	void CheckCheeseChase (){
-		float myDist = 
+		
 	}
 }

@@ -43,19 +43,19 @@ public class RigidFPC : MonoBehaviour
 
         if(Input.GetKey(KeyCode.UpArrow))
         {
-            lookPosition.z = 1;
+            lookPosition.z = -1;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            lookPosition.z = -1;
+            lookPosition.z = 1;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            lookPosition.x = -1;
+            lookPosition.x = 1;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            lookPosition.x = 1;
+            lookPosition.x = -1;
         }
 
         visuals.transform.LookAt(lookPosition + visuals.transform.position);
