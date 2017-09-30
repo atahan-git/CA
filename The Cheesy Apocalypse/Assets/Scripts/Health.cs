@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
 {
+	public static Health s;
+	public System.Action chaseCheese;
+	public System.Action stopChase;
+
     RigidFPC movementScript;
 
     Rigidbody playerRigidbody;
@@ -42,6 +46,8 @@ public class Health : MonoBehaviour, IDamageable
                 Vector3 shootVector = Quaternion.Euler(0, Random.Range(0, 360), 0) * new Vector3(150, 400, 0);
                 activeCheese.GetComponent<Rigidbody>().AddForce(shootVector);
 
+				chaseCheese.Invoke ();
+
                 //shootVector = Quaternion.Euler(0, 180, 0) * shootVector;
                 playerRigidbody.AddForce(0, 200, 0);
 
@@ -72,6 +78,7 @@ public class Health : MonoBehaviour, IDamageable
             Destroy(collision.gameObject);
             haveCheese = true;
             MyCheese.SetActive(true);
+			stopChase.Invoke ();
         }
     }
 }

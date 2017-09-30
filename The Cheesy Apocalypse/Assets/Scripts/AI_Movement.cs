@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +14,9 @@ public class AI_Movement : MonoBehaviour {
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		agent = GetComponent<NavMeshAgent> ();
+
+		Health.s.chaseCheese += CheckCheeseChase;
+
 		InvokeRepeating ("AgentUpdate", 0.1f, 0.2f);
 	}
 	
@@ -23,5 +27,12 @@ public class AI_Movement : MonoBehaviour {
 
 	void AgentUpdate (){
 		agent.SetDestination (player.position);
+	}
+
+
+	public static float distance;
+	public static Delegate bestOne;
+	void CheckCheeseChase (){
+		float myDist = 
 	}
 }
