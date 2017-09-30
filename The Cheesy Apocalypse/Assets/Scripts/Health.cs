@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using UnityEngine;
+using System;
 
 public class Health : MonoBehaviour, IDamageable
 {
+	public static Health s;
+
+	public Action chaseCheese;
+
     RigidFPC MovementScript;
 
     Rigidbody PlayerRigidbody;
 
     public GameObject Cheese;
+	public GameObject activeCheese; //this should be a reference to the currently dropped cheese
 
     public int healthPoints = 1;
 
@@ -15,6 +21,7 @@ public class Health : MonoBehaviour, IDamageable
 
     void Start()
     {
+		s = this;
         MovementScript = GetComponent<RigidFPC>();
         PlayerRigidbody = GetComponent<Rigidbody>();
     }
@@ -30,9 +37,9 @@ public class Health : MonoBehaviour, IDamageable
 
         if (healthPoints <= 0)
         {
-            Instantiate(Cheese, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), transform.rotation);
-
-            haveCheese = false;
+			activeCheese = (GameObject)Instantiate(Cheese, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), transform.rotation);
+			//call this only when we actually drop a piece of cheese
+			chaseCheese.Invoke ();
 
             PlayerRigidbody.velocity = Vector3.zero;
             PlayerRigidbody.angularVelocity = Vector3.zero;
@@ -47,6 +54,4 @@ public class Health : MonoBehaviour, IDamageable
     {
         MovementScript.enabled = true;
     }
-
-    //void OnCollisionEnter
 }
