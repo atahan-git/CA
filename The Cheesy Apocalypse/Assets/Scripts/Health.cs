@@ -46,7 +46,7 @@ public class Health : MonoBehaviour, IDamageable
         {
             if(haveCheese)
             {
-                activeCheese = (GameObject)Instantiate(Cheese, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), transform.rotation);
+                activeCheese = (GameObject)Instantiate(Cheese, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
                 Vector3 shootVector = Quaternion.Euler(0, Random.Range(0, 360), 0) * new Vector3(150, 400, 0);
                 activeCheese.GetComponent<Rigidbody>().AddForce(shootVector);
 
@@ -68,7 +68,6 @@ public class Health : MonoBehaviour, IDamageable
         }
 
         movementScript.enabled = false;
-
         Invoke("RemoveStun", 1);
     }
 
@@ -80,7 +79,7 @@ public class Health : MonoBehaviour, IDamageable
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Cheese"))
+        if (collision.gameObject.CompareTag("Cheese") && movementScript.enabled)
         {
             Destroy(collision.gameObject);
             haveCheese = true;
