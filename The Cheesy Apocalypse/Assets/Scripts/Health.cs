@@ -53,7 +53,8 @@ public class Health : MonoBehaviour, IDamageable
                 activeCheese.GetComponentInChildren<MeshCollider>().enabled = false;
                 Invoke("EnableCollider", 0.5f);
 
-                if (chaseCheese != null) {
+                if (chaseCheese != null)
+                {
 					AI_Movement.distance = 10000;
 					chaseCheese.Invoke ();
 				}
