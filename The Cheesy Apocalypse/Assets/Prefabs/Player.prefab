@@ -283,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4403829735876142}
   - component: {fileID: 65179855448192616}
+  - component: {fileID: 65074536218600998}
   - component: {fileID: 65588222184215640}
   - component: {fileID: 54595037776252708}
   - component: {fileID: 114030410531214548}
@@ -1441,6 +1442,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &65074536218600998
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1631912206223298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.3, z: 0.4}
+  m_Center: {x: 0, y: 0.3, z: 0.9}
 --- !u!65 &65179855448192616
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1451,8 +1464,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 1.3}
-  m_Center: {x: 0, y: 0.25, z: 0.4}
+  m_Size: {x: 0.5, y: 0.6, z: 1}
+  m_Center: {x: 0, y: 0.3, z: 0.2}
 --- !u!65 &65588222184215640
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1463,8 +1476,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0.25}
 --- !u!81 &81463439298193994
 AudioListener:
   m_ObjectHideFlags: 1
@@ -1491,7 +1504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 4, y: 5, z: 4}
-  visuals: {fileID: 0}
+  visuals: {fileID: 1453862418861884}
   sidewaysMovementContoller: 1.1
   cheeseSpeed: 0.5
 --- !u!114 &114317998095185876
