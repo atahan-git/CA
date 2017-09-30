@@ -11,6 +11,8 @@ public class AI_Movement : MonoBehaviour {
 
 	Transform target;
 
+	enum AIMode {attackPlayer, chaseCheese, escapePlayer};
+	AIMode activeMode = AIMode.attackPlayer;
 
 	// Use this for initialization
 	void Start () {
@@ -41,7 +43,8 @@ public class AI_Movement : MonoBehaviour {
 		float myDist = Vector3.Distance(transform.position, Health.s.activeCheese.transform.position);
 
 		if (myDist < distance) {
-			BestOne (false);
+			if (BestOne != null)
+				BestOne (false);
 			BestOne = ChaseCheese;
 			BestOne (true);
 		}
@@ -52,10 +55,13 @@ public class AI_Movement : MonoBehaviour {
 	}
 
 	void ChaseCheese (bool val){
-		if (val)
+		if (val) {
 			target = Health.s.activeCheese.transform;
-		else
+			activeMode = AIMode.chaseCheese;
+		} else {
 			target = player;
+			activeMode = AIMode.attackPlayer;
+		}
 	}
 
 }
