@@ -33,7 +33,7 @@ public class RigidFPC : MonoBehaviour
         }
         GetComponent<Rigidbody>().velocity += localVelocity;
 
-        if (Input.GetKeyDown(KeyCode.Space) && grounded && GetComponent<Rigidbody>().velocity.y < speed.y - 1)
+        if (Input.GetKey(KeyCode.Space) && grounded && GetComponent<Rigidbody>().velocity.y < speed.y - 1)
         {
             GetComponent<Rigidbody>().velocity += new Vector3(0, speed.y, 0);
         }
