@@ -74,7 +74,7 @@ public class AI_Movement : MonoBehaviour {
 	void ChaseCheese (bool val){
 		if (val) {
 			AIDelay = 2f;
-			print (gameObject.name);
+			//print (gameObject.name);
 			target = Health.s.activeCheese.transform;
 			activeMode = AIMode.chaseCheese;
 			agent.stoppingDistance = 0;
