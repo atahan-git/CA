@@ -9,6 +9,7 @@ public class Health : MonoBehaviour, IDamageable
 
     public GameObject Cheese;
     public GameObject MyCheese;
+    public GameObject StunSymbol;
 
     [HideInInspector]
     public GameObject activeCheese;
@@ -21,6 +22,7 @@ public class Health : MonoBehaviour, IDamageable
     {
         movementScript = GetComponent<RigidFPC>();
         playerRigidbody = GetComponent<Rigidbody>();
+        StunSymbol.SetActive(false);
     }
 
     public void Damage()
@@ -49,6 +51,7 @@ public class Health : MonoBehaviour, IDamageable
 
             playerRigidbody.velocity = Vector3.zero;
             playerRigidbody.angularVelocity = Vector3.zero;
+            StunSymbol.SetActive(true);
         }
 
         movementScript.enabled = false;
@@ -59,6 +62,7 @@ public class Health : MonoBehaviour, IDamageable
     void RemoveStun()
     {
         movementScript.enabled = true;
+        StunSymbol.SetActive(false);
     }
 
     void OnCollisionEnter(Collision collision)

@@ -7,7 +7,7 @@ public class RigidFPC : MonoBehaviour
     public GameObject visuals;
 
 	public float sidewaysMovementContoller;
-    public float startingSmoothness;
+    //public float startingSmoothness;
     public float cheeseSpeed;
 
     bool grounded;
