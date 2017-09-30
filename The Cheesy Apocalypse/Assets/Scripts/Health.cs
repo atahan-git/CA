@@ -46,6 +46,7 @@ public class Health : MonoBehaviour, IDamageable
                 Vector3 shootVector = Quaternion.Euler(0, Random.Range(0, 360), 0) * new Vector3(150, 400, 0);
                 activeCheese.GetComponent<Rigidbody>().AddForce(shootVector);
 
+				if(chaseCheese != null)
 				chaseCheese.Invoke ();
 
                 //shootVector = Quaternion.Euler(0, 180, 0) * shootVector;
@@ -78,6 +79,7 @@ public class Health : MonoBehaviour, IDamageable
             Destroy(collision.gameObject);
             haveCheese = true;
             MyCheese.SetActive(true);
+			if(stopChase != null)
 			stopChase.Invoke ();
         }
     }

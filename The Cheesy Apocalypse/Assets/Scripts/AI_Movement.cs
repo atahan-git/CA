@@ -19,6 +19,7 @@ public class AI_Movement : MonoBehaviour {
 		target = player.transform;
 
 		Health.s.chaseCheese += CheckCheeseChase;
+		Health.s.stopChase += StopChase;
 
 		InvokeRepeating ("AgentUpdate", 0.1f, 0.2f);
 	}
@@ -41,13 +42,17 @@ public class AI_Movement : MonoBehaviour {
 
 		if (myDist < distance) {
 			BestOne (false);
-			BestOne = BestOneCallBack;
+			BestOne = ChaseCheese;
 			BestOne (true);
 		}
 	}
 
-	void BestOneCallBack (bool isStillBest){
-		if (isStillBest)
+	void StopChase (){
+		ChaseCheese (false);
+	}
+
+	void ChaseCheese (bool val){
+		if (val)
 			target = Health.s.activeCheese.transform;
 		else
 			target = player;
