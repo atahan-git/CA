@@ -17,7 +17,7 @@ public class Hp : MonoBehaviour, IDamageable {
 		heatlhPoints -= amount;
 
 		if (heatlhPoints <= 0)
-			Die ();
+			BroadcastMessage ("Die");
 	}
 
 	void Die(){
