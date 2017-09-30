@@ -47,7 +47,7 @@ public class Health : MonoBehaviour, IDamageable
                 activeCheese.GetComponent<Rigidbody>().AddForce(shootVector);
 
 				if(chaseCheese != null)
-				chaseCheese.Invoke ();
+					chaseCheese.Invoke ();
 
                 //shootVector = Quaternion.Euler(0, 180, 0) * shootVector;
                 playerRigidbody.AddForce(0, 200, 0);
