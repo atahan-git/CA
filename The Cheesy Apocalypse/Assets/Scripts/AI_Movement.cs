@@ -9,11 +9,14 @@ public class AI_Movement : MonoBehaviour {
 	Transform player;
 	NavMeshAgent agent;
 
+	Transform target;
+
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		agent = GetComponent<NavMeshAgent> ();
+		target = player.transform;
 
 		Health.s.chaseCheese += CheckCheeseChase;
 
@@ -26,13 +29,28 @@ public class AI_Movement : MonoBehaviour {
 	}
 
 	void AgentUpdate (){
-		agent.SetDestination (player.position);
+		agent.SetDestination (target.position);
 	}
 
 
 	public static float distance;
-	public static Delegate bestOne;
+	delegate void BasicDelegate(bool val);
+	BasicDelegate BestOne;
 	void CheckCheeseChase (){
-		float myDist = 
+		float myDist = Vector3.Distance(transform.position, Health.s.activeCheese.transform.position);
+
+		if (myDist < distance) {
+			BestOne (false);
+			BestOne = BestOneCallBack;
+			BestOne (true);
+		}
 	}
+
+	void BestOneCallBack (bool isStillBest){
+		if (isStillBest)
+			target = Health.s.activeCheese.transform;
+		else
+			target = player;
+	}
+
 }
