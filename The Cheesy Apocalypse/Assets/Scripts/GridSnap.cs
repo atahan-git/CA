@@ -16,7 +16,7 @@ public class GridSnap : MonoBehaviour {
 			switch(mySnapType){
 			case snapType.normal:
 				posSnap = 1f;
-				rotSnap = 90f;
+				rotSnap = 45f;
 				break;
 			case snapType.floor:
 				posSnap = 10f;
@@ -33,7 +33,7 @@ public class GridSnap : MonoBehaviour {
 			}
 
 			transform.position = new Vector3 (((int)(transform.position.x / posSnap)) * posSnap, 0, ((int)(transform.position.z / posSnap)) * posSnap);
-			//transform.rotation = Quaternion.Euler (((int)(transform.rotation.eulerAngles.x / rotSnap)) * rotSnap, 0, ((int)(transform.rotation.eulerAngles.z / rotSnap)) * rotSnap);
+			transform.rotation = Quaternion.Euler (((int)(transform.rotation.eulerAngles.x / rotSnap)) * rotSnap, ((int)(transform.rotation.eulerAngles.y / rotSnap)) * rotSnap, ((int)(transform.rotation.eulerAngles.z / rotSnap)) * rotSnap);
 
 		}
 	}
