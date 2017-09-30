@@ -1,29 +1,24 @@
 fileFormatVersion: 2
-guid: 1fc7f8d480c547d46880033d38bf679e
-timeCreated: 1506763457
+guid: 57a872e8856d3dd4c9f47d8b8a0e5f16
+timeCreated: 1506793973
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: kasa_2
-    100004: masa
-    100006: pc
-    100008: pc_2
-    400000: //RootNode
-    400002: kasa_2
-    400004: masa
-    400006: pc
-    400008: pc_2
-    2300000: kasa_2
-    2300002: masa
-    2300004: pc_2
-    3300000: kasa_2
-    3300002: masa
-    3300004: pc_2
-    4300000: pc_2
-    4300002: kasa_2
-    4300004: masa
+    100000: Cube
+    100002: Cube_1
+    100004: //RootNode
+    400000: Cube
+    400002: Cube_1
+    400004: //RootNode
+    2300000: Cube
+    2300002: Cube_1
+    3300000: Cube
+    3300002: Cube_1
+    4300000: Cube_1
+    4300002: Cube
+    6400000: Cube
+    6400002: Cube_1
   materials:
     importMaterials: 1
     materialName: 0
@@ -53,7 +48,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 0.5
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1

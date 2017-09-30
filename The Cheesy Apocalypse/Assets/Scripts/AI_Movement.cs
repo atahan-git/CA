@@ -42,7 +42,7 @@ public class AI_Movement : MonoBehaviour {
 	}
 
 	void AgentUpdate (){
-		if (AIDelay > 0f) {
+		if (AIDelay > 0f || Vector3.Distance(transform.position,player.position) > 15f) {
 			agent.enabled = false;
 		} else {
 			agent.enabled = true;
@@ -62,7 +62,7 @@ public class AI_Movement : MonoBehaviour {
 	public delegate void BasicDelegate(bool val);
 	public static BasicDelegate BestOne;
 	void CheckCheeseChase (){
-		if (transform == null)
+		if (GetComponent<Transform>() == null)
 			return;
 
 		float myDist = Vector3.Distance(transform.position, Health.s.activeCheese.transform.position);
