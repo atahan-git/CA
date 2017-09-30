@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 54227385609618488}
   m_Layer: 0
   m_Name: AI_Bear
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,7 +366,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4547764250187880}
-  - component: {fileID: 54661654452523722}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: Untagged
@@ -1497,21 +1496,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!54 &54661654452523722
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1805362656009448}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!64 &64277417105714406
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -1550,6 +1534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeMode: 0
+  Cheese: {fileID: 1922033677171126, guid: ada24836de6d1204a919c1cf3ff4b3c3, type: 2}
   MyCheese: {fileID: 1805362656009448}
   haveCheese: 1
 --- !u!114 &114963860295054564
