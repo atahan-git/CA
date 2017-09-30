@@ -4,19 +4,10 @@ using UnityEngine;
 
 public class Hp : MonoBehaviour, IDamageable {
 
-	public int heatlhPoints = 20;
+	public int heatlhPoints = 1;
 
 	public GameObject deathEffect;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void Damage (){
 		Damage (1);

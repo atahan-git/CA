@@ -18,7 +18,7 @@ public class BulletScript : MonoBehaviour {
 		rend.material.color = new Color (0.4f, 0.4f, 0.4f);
 
 		myCol.enabled = false;
-		Invoke ("EnableCollider", 0.1f);
+		Invoke ("EnableCollider", 0.05f);
 
 		GetComponent<Rigidbody> ().AddRelativeForce (0, 0, 600);
 	}
