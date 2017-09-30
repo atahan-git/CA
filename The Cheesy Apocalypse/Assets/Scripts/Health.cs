@@ -3,11 +3,15 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    RigidFPC MovementScript;
+    RigidFPC movementScript;
 
-    Rigidbody PlayerRigidbody;
+    Rigidbody playerRigidbody;
 
     public GameObject Cheese;
+    public GameObject MyCheese;
+
+    [HideInInspector]
+    public GameObject activeCheese;
 
     public int healthPoints = 1;
 
@@ -15,8 +19,8 @@ public class Health : MonoBehaviour, IDamageable
 
     void Start()
     {
-        MovementScript = GetComponent<RigidFPC>();
-        PlayerRigidbody = GetComponent<Rigidbody>();
+        movementScript = GetComponent<RigidFPC>();
+        playerRigidbody = GetComponent<Rigidbody>();
     }
 
     public void Damage()
@@ -30,23 +34,40 @@ public class Health : MonoBehaviour, IDamageable
 
         if (healthPoints <= 0)
         {
-            Instantiate(Cheese, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), transform.rotation);
+            if(haveCheese)
+            {
+                activeCheese = (GameObject)Instantiate(Cheese, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
+                Vector3 shootVector = Quaternion.Euler(0, Random.Range(0, 360), 0) * new Vector3(150, 400, 0);
+                activeCheese.GetComponent<Rigidbody>().AddForce(shootVector);
 
-            haveCheese = false;
+                //shootVector = Quaternion.Euler(0, 180, 0) * shootVector;
+                playerRigidbody.AddForce(0, 200, 0);
 
-            PlayerRigidbody.velocity = Vector3.zero;
-            PlayerRigidbody.angularVelocity = Vector3.zero;
+                haveCheese = false;
+                MyCheese.SetActive(false);
+            }
+
+            playerRigidbody.velocity = Vector3.zero;
+            playerRigidbody.angularVelocity = Vector3.zero;
         }
 
-        MovementScript.enabled = false;
+        movementScript.enabled = false;
 
         Invoke("RemoveStun", 1);
     }
 
     void RemoveStun()
     {
-        MovementScript.enabled = true;
+        movementScript.enabled = true;
     }
 
-    //void OnCollisionEnter
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Cheese"))
+        {
+            Destroy(collision.gameObject);
+            haveCheese = true;
+            MyCheese.SetActive(true);
+        }
+    }
 }
