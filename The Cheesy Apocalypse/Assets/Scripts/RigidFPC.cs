@@ -2,70 +2,74 @@
 
 public class RigidFPC : MonoBehaviour
 {
-	public Vector3 Speed;
+	public Vector3 speed;
 
-    public GameObject Visuals;
+    public GameObject visuals;
 
-	public float SidewaysMovementContoller;
-    public float StartingSmoothness;
+	public float sidewaysMovementContoller;
+    public float startingSmoothness;
+    public float cheeseSpeed;
 
-    bool Grounded;
+    bool grounded;
 
     
 
     void FixedUpdate()
     {
-        Vector3 Keyinput = new Vector3(Input.GetAxis("Horizontal") * Speed.z, GetComponent<Rigidbody>().velocity.y, Input.GetAxis("Vertical") * Speed.x);
+        Vector3 keyinput = new Vector3(Input.GetAxis("Horizontal") * speed.z, GetComponent<Rigidbody>().velocity.y, Input.GetAxis("Vertical") * speed.x);
 
-        if (Keyinput.x != 0 && Keyinput.z != 0)
+        if (keyinput.x != 0 && keyinput.z != 0)
         {
-            Keyinput.x /= SidewaysMovementContoller;
-            Keyinput.z /= SidewaysMovementContoller;
+            keyinput.x /= sidewaysMovementContoller;
+            keyinput.z /= sidewaysMovementContoller;
         }
 
-        Vector3 LocalVelocity = transform.TransformDirection(Keyinput);
-        LocalVelocity = LocalVelocity - GetComponent<Rigidbody>().velocity;
-        LocalVelocity /= StartingSmoothness;
-        GetComponent<Rigidbody>().velocity += LocalVelocity;
-
-        if (Input.GetKeyDown(KeyCode.Space) && Grounded && GetComponent<Rigidbody>().velocity.y < Speed.y - 1)
+        Vector3 localVelocity = transform.TransformDirection(keyinput);
+        localVelocity = localVelocity - GetComponent<Rigidbody>().velocity;
+        //localVelocity /= startingSmoothness;
+        if (GetComponent<Health>().haveCheese)
         {
-            GetComponent<Rigidbody>().velocity += new Vector3(0, Speed.y, 0);
+            localVelocity *= cheeseSpeed;
+        }
+        GetComponent<Rigidbody>().velocity += localVelocity;
+
+        if (Input.GetKeyDown(KeyCode.Space) && grounded && GetComponent<Rigidbody>().velocity.y < speed.y - 1)
+        {
+            GetComponent<Rigidbody>().velocity += new Vector3(0, speed.y, 0);
         }
 
         //visuals
-        Vector3 LookPosition = Vector3.zero;
+        Vector3 lookPosition = Vector3.zero;
 
         if(Input.GetKey(KeyCode.UpArrow))
         {
-            LookPosition.z = 1;
+            lookPosition.z = 1;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            LookPosition.z = -1;
+            lookPosition.z = -1;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            LookPosition.x = -1;
+            lookPosition.x = -1;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            LookPosition.x = 1;
+            lookPosition.x = 1;
         }
 
-
-        Visuals.transform.LookAt(LookPosition + Visuals.transform.position);
-        if(LookPosition.magnitude > 0)
-        Visuals.transform.Rotate(0, -45, 0);
+        visuals.transform.LookAt(lookPosition + visuals.transform.position);
+        if(lookPosition.magnitude > 0)
+        visuals.transform.Rotate(0, -45, 0);
     }
 
 	void OnTriggerStay()
     {
-		Grounded = true;
+		grounded = true;
 	}
 
 	void OnTriggerExit()
     {
-		Grounded = false;
+		grounded = false;
 	}
 }
