@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class AI_Movement : MonoBehaviour {
 
-	Transform player;
+	[HideInInspector]
+	public Transform player;
 	NavMeshAgent agent;
 
 	Transform escapeSpot;
@@ -39,10 +40,12 @@ public class AI_Movement : MonoBehaviour {
 			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (player.position - transform.position), 5 * Time.deltaTime);
 		if (AIDelay > 0f)
 			AIDelay -= Time.deltaTime;
+
+		print (activeMode);
 	}
 
 	void AgentUpdate (){
-		if (AIDelay > 0f || Vector3.Distance(transform.position,player.position) > 15f) {
+		if (AIDelay > 0f || (Vector3.Distance(transform.position,player.position) > 15f && activeMode == AIMode.attackPlayer)) {
 			agent.enabled = false;
 		} else {
 			agent.enabled = true;
@@ -62,8 +65,8 @@ public class AI_Movement : MonoBehaviour {
 	public delegate void BasicDelegate(bool val);
 	public static BasicDelegate BestOne;
 	void CheckCheeseChase (){
-		if (GetComponent<Transform>() == null)
-			return;
+		/*if (GetComponent<Transform>() == null)
+			return;*/
 
 		float myDist = Vector3.Distance(transform.position, Health.s.activeCheese.transform.position);
 
@@ -72,9 +75,10 @@ public class AI_Movement : MonoBehaviour {
 				BestOne (false);
 			BestOne = ChaseCheese;
 			BestOne (true);
+			distance = myDist;
 		}
 
-		distance = myDist;
+
 	}
 
 	void StopChase (){
@@ -97,11 +101,14 @@ public class AI_Movement : MonoBehaviour {
 		}
 	}
 
-	void OnDestroyed (){
+	void Die (){
 		Health.s.chaseCheese -= CheckCheeseChase;
 		Health.s.stopChase -= StopChase;
 
 		DropCheese ();
+
+		if (BestOne == ChaseCheese)
+			BestOne = null;
 
 		if (activeMode == AIMode.chaseCheese)
 			Health.s.chaseCheese.Invoke ();
@@ -110,6 +117,7 @@ public class AI_Movement : MonoBehaviour {
 	public GameObject Cheese;
 	public GameObject MyCheese;
 
+	[HideInInspector]
 	public bool haveCheese = false;
 
 
@@ -117,6 +125,7 @@ public class AI_Movement : MonoBehaviour {
 	{
 		if (collision.gameObject.CompareTag("Cheese"))
 		{
+			print ("got cheese");
 			AIDelay = 1f;
 			Destroy(collision.gameObject);
 			haveCheese = true;
@@ -130,7 +139,8 @@ public class AI_Movement : MonoBehaviour {
 	}
 
 	public void DropCheese (){
-		if (haveCheese) {
+		if (haveCheese && MyCheese.activeInHierarchy == true) {
+			print ("dropped cheese" + haveCheese);
 			GameObject aCheese = (GameObject)Instantiate (Cheese, new Vector3 (transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 			Vector3 shootVector = Quaternion.Euler (0, Random.Range (0, 360), 0) * new Vector3 (150, 400, 0);
 			aCheese.GetComponent<Rigidbody> ().AddForce (shootVector);
