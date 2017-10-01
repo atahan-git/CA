@@ -7,6 +7,11 @@ public class LevelSelector : MonoBehaviour
 
     void Start()
     {
+        if (s != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         s = this;
         DontDestroyOnLoad(this);
     }
