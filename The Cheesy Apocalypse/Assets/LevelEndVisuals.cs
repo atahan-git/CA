@@ -26,7 +26,7 @@ public class LevelEndVisuals : MonoBehaviour {
 			return;
 		isLocked = true;
 
-		GameObject.FindGameObjectWithTag ("Player").GetComponent<RigidFPC> ().enabled = false;
+		GameObject.FindGameObjectWithTag ("Player").transform.root.GetComponent<RigidFPC> ().enabled = false;
 		Time.timeScale = 0;
 
 		winScreen.SetActive (true);
