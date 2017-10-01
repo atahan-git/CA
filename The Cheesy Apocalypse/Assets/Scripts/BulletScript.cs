@@ -57,12 +57,15 @@ public class BulletScript : MonoBehaviour {
 
 	IDamageable GetDamageable (GameObject obj){
 		IDamageable myThing;
-		obj = obj.transform.root.gameObject;
+		//obj = obj.transform.root.gameObject;
 
 		myThing = obj.GetComponent<IDamageable> ();
-		myThing = obj.GetComponentInChildren<IDamageable> ();
-		myThing = obj.GetComponentInParent<IDamageable> ();
 
-		return myThing;
+        if (myThing == null)
+            myThing = obj.GetComponentInParent<IDamageable> ();
+        if(myThing == null)
+            myThing = obj.GetComponentInChildren<IDamageable>();
+
+        return myThing;
 	}
 }
