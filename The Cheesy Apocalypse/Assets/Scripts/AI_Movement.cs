@@ -38,7 +38,7 @@ public class AI_Movement : MonoBehaviour {
 	void Update () {
 		if (activeMode == AIMode.attackPlayer) {
 			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (player.position - transform.position), 5 * Time.deltaTime);
-			GetComponent<AI_Shoot>().gunPos.rotation = Quaternion.Slerp (GetComponent<AI_Shoot>().gunPos.rotation, Quaternion.LookRotation ((player.position + Vector3.up*0.1f) - GetComponent<AI_Shoot>().gunPos.position), 20 * Time.deltaTime);
+			GetComponent<AI_Shoot>().gunPos.rotation = Quaternion.Slerp (GetComponent<AI_Shoot>().gunPos.rotation, Quaternion.LookRotation ((player.position + Vector3.up*0.2f) - GetComponent<AI_Shoot>().gunPos.position), 20 * Time.deltaTime);
 		}
 		if (AIDelay > 0f)
 			AIDelay -= Time.deltaTime;
@@ -69,6 +69,9 @@ public class AI_Movement : MonoBehaviour {
 	void CheckCheeseChase (){
 		/*if (GetComponent<Transform>() == null)
 			return;*/
+
+		if (isDead)
+			return;
 
 		float myDist = Vector3.Distance(transform.position, Health.s.activeCheese.transform.position);
 
@@ -115,9 +118,6 @@ public class AI_Movement : MonoBehaviour {
 
 		if (BestOne == ChaseCheese)
 			BestOne = null;
-
-		if (activeMode == AIMode.chaseCheese)
-			Health.s.chaseCheese.Invoke ();
 
 	}
 

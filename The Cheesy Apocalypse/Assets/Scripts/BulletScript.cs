@@ -40,15 +40,19 @@ public class BulletScript : MonoBehaviour {
 		} else {
 			GetComponent<Rigidbody> ().AddForce (0f, Physics.gravity.y, 0f);
 		}
+
+		//print (GetComponent<Rigidbody> ().velocity.magnitude);
+
+		if (GetComponent<Rigidbody> ().velocity.magnitude < 5f && myCol.enabled) {
+			isLethal = false;
+			myTrail.enabled = false;
+			rend.material.color = new Color (0.6f, 0.6f, 0.6f);
+		}
 	}
 
 	void OnCollisionEnter (Collision col){
 		if (isLethal) {
 			if (col.gameObject.tag != "Bullet") {
-				isLethal = false;
-				myTrail.enabled = false;
-				rend.material.color = new Color (0.6f, 0.6f, 0.6f);
-
 				IDamageable myTarget = GetDamageable (col.collider.gameObject);
 
 				if (isRocket) {
