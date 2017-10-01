@@ -19,6 +19,8 @@ public class MenuController : MonoBehaviour {
 	float colorVal = 0f;
 
 	void Start (){
+		PlayerPrefs.SetInt ("isstartedonce", 0);
+		Time.timeScale = 1;
 		activeColor = bgnormal;
 
 		menu1.SetActive (false);

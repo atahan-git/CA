@@ -11,7 +11,7 @@ public class AI_Movement : MonoBehaviour {
 
 	Transform escapeSpot;
 
-	Transform target;
+	public Transform target;
 
 	public enum AIMode {attackPlayer, chaseCheese, escapePlayer};
 	public AIMode activeMode = AIMode.attackPlayer;
@@ -48,6 +48,7 @@ public class AI_Movement : MonoBehaviour {
 		if (AIDelay > 0f)
 			AIDelay -= Time.deltaTime;
 
+		print (target.position);
 		//print (activeMode);
 	}
 
@@ -147,6 +148,7 @@ public class AI_Movement : MonoBehaviour {
 			haveCheese = true;
 			MyCheese.SetActive(true);
 			activeMode = AIMode.escapePlayer;
+			agent.stoppingDistance = 0;
 
 			agent.speed = agent.speed / 2f;
 
