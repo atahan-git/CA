@@ -11,6 +11,11 @@ public class BulletScript : MonoBehaviour {
 	TrailRenderer myTrail;
 
 	public bool isSnipar = false;
+	public bool isRocket = false;
+
+	public GameObject rocketExp;
+
+	float rocketExpRange = 2f;
 
 	// Use this for initialization
 	void Start () {
@@ -48,6 +53,15 @@ public class BulletScript : MonoBehaviour {
 			rend.material.color = new Color (0.6f, 0.6f, 0.6f);
 
 			IDamageable myTarget = GetDamageable (col.collider.gameObject);
+
+			if (isRocket) {
+				Collider[] overlap = Physics.OverlapSphere (transform.position, rocketExpRange);
+				foreach (Collider _col in overlap) {
+					IDamageable _tar = GetDamageable (_col.gameObject);
+					if (_tar != null)
+						_tar.Damage ();
+				}
+			}
 
 			if (myTarget != null) {
 				myTarget.Damage ();
