@@ -16,4 +16,12 @@ public class Finisher : MonoBehaviour
             LevelSelector.s.SelectLevel(CurrentLevel);
         }
     }
+
+	void Win (){
+		LevelEndVisuals.s.Win ();
+	}
+
+	void Lose (){
+		LevelEndVisuals.s.Lose ();
+	}
 }
