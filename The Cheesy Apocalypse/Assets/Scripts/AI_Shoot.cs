@@ -12,7 +12,6 @@ public class AI_Shoot : MonoBehaviour {
 	public ShootType shootType;
 	int gunId = 0;
 
-	// Use this for initialization
 	void Start () {
 		
 		gunPos = transform.Find ("GunPos");
@@ -20,6 +19,7 @@ public class AI_Shoot : MonoBehaviour {
 		//SpawnGun ();
 
 		barrelPos = transform.Find ("BarrelPos");
+        barrelPos.SetParent(gunPos);
 
 		Invoke ("Shoot", 1f);
 
@@ -68,29 +68,31 @@ public class AI_Shoot : MonoBehaviour {
 				range = 1f;
 				break;
 			case ShootType.shotgun:
-				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler (0, 30f, 0));
-				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler (0, 0, 0));
-				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler (0, -30f, 0));
-				reloadTime = 3f;
+				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, 10f, 0));
+				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, 0, 0));
+				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, -10f, 0));
+                Instantiate(GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, 20f, 0));
+                Instantiate(GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, -20f, 0));
+                reloadTime = 3f;
 				range = 1f;
 				gunId = 1;
 				break;
 			case ShootType.machinegun:
 				StartCoroutine (MachineGunShoot());
-				reloadTime = 4f;
+				reloadTime = 3f;
 				range = 2f;
 				gunId = 2;
 				break;
 			case ShootType.sniper:
 				Instantiate (GunContainer.s.sniperBullet, barrelPos.position, barrelPos.rotation);
 				reloadTime = 4f;
-				range = 2f;
+				range = 1f;
 				gunId = 3;
 				break;
 			case ShootType.rocket:
 				Instantiate (GunContainer.s.rocketBullet, barrelPos.position, barrelPos.rotation);
 				reloadTime = 5f;
-				range = 2f;
+				range = 3f;
 				gunId = 4;
 				break;
 			}
@@ -101,11 +103,10 @@ public class AI_Shoot : MonoBehaviour {
 	}
 
 	IEnumerator MachineGunShoot(){
-		Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation);
-		yield return new WaitForSeconds (Random.Range (0.1f, 0.12f));
-		Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation);
-		yield return new WaitForSeconds (Random.Range (0.1f, 0.12f));
-		Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation);
-		yield return new WaitForSeconds (Random.Range (0.1f, 0.12f));
+        for (int i = 0; i < 3; i++)
+        {
+            Instantiate(GunContainer.s.bullet, barrelPos.position, barrelPos.rotation);
+            yield return new WaitForSeconds(Random.Range(0.1f, 0.12f));
+        }
 	}
 }
