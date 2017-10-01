@@ -42,6 +42,7 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void MainButton (){
+		print ("this called");
 		activeColor = bgmenu;
 		oldColor = bgnormal;
 		colorVal = 0f;

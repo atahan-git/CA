@@ -7,17 +7,29 @@ public class LevelSelector : MonoBehaviour
 
     void Start()
     {
-        if (s != null)
+		if (s != null && s != this)
         {
             Destroy(gameObject);
             return;
         }
+		SceneManager.sceneLoaded += OnSceneLoaded;
         s = this;
         DontDestroyOnLoad(this);
     }
 
+	bool isLoading = false;
     public void SelectLevel(int Level)
     {
-        SceneManager.LoadScene(Level);
+		if (!isLoading) {
+			SceneManager.LoadScene (Level);
+			isLoading = true;
+		}
     }
+
+	void OnSceneLoaded (Scene scene, LoadSceneMode mode){
+		isLoading = false;
+		/*foreach (MonoBehaviour mono in FindObjectsOfType<MonoBehaviour>()) {
+			mono.BroadcastMessage ("Start");
+		}*/
+	}
 }
