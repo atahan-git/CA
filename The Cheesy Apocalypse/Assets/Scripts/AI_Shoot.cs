@@ -55,7 +55,7 @@ public class AI_Shoot : MonoBehaviour {
 		Instantiate (GunContainer.s.container [gunId], gunPos);
 	}
 		
-	float attackrange = 15f;
+	float attackrange = 10f;
 	public void Shoot (){
 		float reloadTime = 2f;
 		float range = 1f;

@@ -18,8 +18,13 @@ public class AI_Movement : MonoBehaviour {
 
 	float AIDelay = 0f;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        haveCheese = false;
+    }
+
+    // Use this for initialization
+    void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		agent = GetComponent<NavMeshAgent> ();
 		target = player.transform;
@@ -47,7 +52,7 @@ public class AI_Movement : MonoBehaviour {
 	}
 
 	void AgentUpdate (){
-		if (AIDelay > 0f || (Vector3.Distance(transform.position,player.position) > 15f && activeMode == AIMode.attackPlayer)) {
+		if (AIDelay > 0f || (Vector3.Distance(transform.position,player.position) > 10f && activeMode == AIMode.attackPlayer)) {
 			agent.enabled = false;
 		} else {
 			agent.enabled = true;
@@ -153,7 +158,9 @@ public class AI_Movement : MonoBehaviour {
 		if (haveCheese && MyCheese.activeInHierarchy == true) {
 			GameObject aCheese = (GameObject)Instantiate (Cheese, new Vector3 (transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 			Vector3 shootVector = Quaternion.Euler (0, Random.Range (0, 360), 0) * new Vector3 (150, 400, 0);
-			aCheese.GetComponent<Rigidbody> ().AddForce (shootVector);
+            Health.s.activeCheese = aCheese;
+
+            aCheese.GetComponent<Rigidbody> ().AddForce (shootVector);
 			print ("dropped cheese" + aCheese);
 
 			haveCheese = false;
