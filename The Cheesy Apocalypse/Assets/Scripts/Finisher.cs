@@ -5,13 +5,13 @@ public class Finisher : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && other.GetComponent<Health>().haveCheese)
+        if (other.tag == "Player" && other.GetComponentInParent<Health>().haveCheese)
         {
-            print("GG, You Win!");
+            LevelSelector.s.SelectLevel(0);
         }
         if (other.tag == "Enemy" && other.GetComponent<AI_Movement>().haveCheese)
         {
-            print("You Lost!");
+            LevelSelector.s.SelectLevel(1);
         }
     }
 }
