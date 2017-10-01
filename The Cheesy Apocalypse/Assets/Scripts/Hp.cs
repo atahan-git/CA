@@ -16,11 +16,13 @@ public class Hp : MonoBehaviour, IDamageable {
 	public void Damage (int amount){
 		heatlhPoints -= amount;
 
-		if (heatlhPoints <= 0)
+		if (heatlhPoints <= 0) {
+			_Die ();
 			BroadcastMessage ("Die");
+		}
 	}
 
-	void Die(){
+	void _Die(){
 		Instantiate (deathEffect, transform.position, Quaternion.identity);
 		Destroy (gameObject);
 	}

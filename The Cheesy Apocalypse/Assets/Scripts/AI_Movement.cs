@@ -105,13 +105,16 @@ public class AI_Movement : MonoBehaviour {
 		Health.s.chaseCheese -= CheckCheeseChase;
 		Health.s.stopChase -= StopChase;
 
-		DropCheese ();
+		transform.position = new Vector3 (1000, 1000, 1000);
 
 		if (BestOne == ChaseCheese)
 			BestOne = null;
 
 		if (activeMode == AIMode.chaseCheese)
 			Health.s.chaseCheese.Invoke ();
+
+		DropCheese ();
+
 	}
 
 	public GameObject Cheese;

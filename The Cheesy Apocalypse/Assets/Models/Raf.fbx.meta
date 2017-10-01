@@ -38,6 +38,11 @@ ModelImporter:
     4300004: Cube_0
     4300006: Cube_1_2
     4300008: Cube_2
+    6400000: Cube
+    6400002: Cube_0
+    6400004: Cube_1
+    6400006: Cube_1_2
+    6400008: Cube_2
   materials:
     importMaterials: 1
     materialName: 0
@@ -67,7 +72,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
