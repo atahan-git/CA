@@ -59,9 +59,9 @@ public class AI_Shoot : MonoBehaviour {
 	public void Shoot (){
 		float reloadTime = 2f;
 		float range = 1f;
-		print ("shoot11");
+		//print ("shoot11");
 		if (GetComponent<AI_Movement> ().activeMode == AI_Movement.AIMode.attackPlayer && Vector3.Distance (transform.position, GetComponent<AI_Movement> ().player.position) < attackrange) {
-			print ("shoot");
+			//print ("shoot");
 			switch (shootType) {
 			case ShootType.pistol:
 				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation);
