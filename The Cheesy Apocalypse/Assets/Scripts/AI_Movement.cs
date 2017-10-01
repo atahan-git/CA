@@ -41,7 +41,7 @@ public class AI_Movement : MonoBehaviour {
 		if (AIDelay > 0f)
 			AIDelay -= Time.deltaTime;
 
-		print (activeMode);
+		//print (activeMode);
 	}
 
 	void AgentUpdate (){

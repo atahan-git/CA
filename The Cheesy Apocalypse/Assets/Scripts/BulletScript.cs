@@ -10,6 +10,8 @@ public class BulletScript : MonoBehaviour {
 
 	TrailRenderer myTrail;
 
+	public bool isSnipar = false;
+
 	// Use this for initialization
 	void Start () {
 		myCol = GetComponent<BoxCollider> ();
@@ -20,7 +22,10 @@ public class BulletScript : MonoBehaviour {
 		myCol.enabled = false;
 		Invoke ("EnableCollider", 0.05f);
 
-		GetComponent<Rigidbody> ().AddRelativeForce (0, 0, 600);
+		if(!isSnipar)
+			GetComponent<Rigidbody> ().AddRelativeForce (0, 0, 600);
+		else
+			GetComponent<Rigidbody> ().AddRelativeForce (0, 0, 1500);
 	}
 
 	void EnableCollider (){
