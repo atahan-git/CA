@@ -37,8 +37,8 @@ public class AI_Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (activeMode == AIMode.attackPlayer) {
-			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (player.position - transform.position), 2 * Time.deltaTime);
-			GetComponent<AI_Shoot>().gunPos.rotation = Quaternion.Slerp (GetComponent<AI_Shoot>().gunPos.rotation, Quaternion.LookRotation (player.position - GetComponent<AI_Shoot>().gunPos.position), 20 * Time.deltaTime);
+			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (player.position - transform.position), 5 * Time.deltaTime);
+			GetComponent<AI_Shoot>().gunPos.rotation = Quaternion.Slerp (GetComponent<AI_Shoot>().gunPos.rotation, Quaternion.LookRotation ((player.position + Vector3.up*0.1f) - GetComponent<AI_Shoot>().gunPos.position), 20 * Time.deltaTime);
 		}
 		if (AIDelay > 0f)
 			AIDelay -= Time.deltaTime;
@@ -109,6 +109,8 @@ public class AI_Movement : MonoBehaviour {
 		Health.s.chaseCheese -= CheckCheeseChase;
 		Health.s.stopChase -= StopChase;
 
+		DropCheese ();
+
 		transform.position = new Vector3 (1000, 1000, 1000);
 
 		if (BestOne == ChaseCheese)
@@ -116,8 +118,6 @@ public class AI_Movement : MonoBehaviour {
 
 		if (activeMode == AIMode.chaseCheese)
 			Health.s.chaseCheese.Invoke ();
-
-		DropCheese ();
 
 	}
 
@@ -132,6 +132,8 @@ public class AI_Movement : MonoBehaviour {
 	{
 		if (isDead)
 			return;
+
+
 		if (collision.gameObject.CompareTag("Cheese"))
 		{
 			print ("got cheese");
@@ -149,16 +151,18 @@ public class AI_Movement : MonoBehaviour {
 
 	public void DropCheese (){
 		if (haveCheese && MyCheese.activeInHierarchy == true) {
-			print ("dropped cheese" + haveCheese);
 			GameObject aCheese = (GameObject)Instantiate (Cheese, new Vector3 (transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 			Vector3 shootVector = Quaternion.Euler (0, Random.Range (0, 360), 0) * new Vector3 (150, 400, 0);
 			aCheese.GetComponent<Rigidbody> ().AddForce (shootVector);
+			print ("dropped cheese" + aCheese);
 
 			haveCheese = false;
 
-			activeMode = AIMode.attackPlayer;
-			target = player;
-			agent.stoppingDistance = stoppingdist;
+			if (!isDead) {
+				activeMode = AIMode.attackPlayer;
+				target = player;
+				agent.stoppingDistance = stoppingdist;
+			}
 
 			AIDelay = 2f;
 		}
