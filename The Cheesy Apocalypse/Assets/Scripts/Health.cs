@@ -51,7 +51,7 @@ public class Health : MonoBehaviour, IDamageable
                 activeCheese.GetComponent<Rigidbody>().AddForce(shootVector);
 
                 activeCheese.GetComponentInChildren<MeshCollider>().enabled = false;
-                Invoke("EnableCollider", 0.5f);
+                Invoke("EnableCollider", 0.3f);
 
                 if (chaseCheese != null)
                 {
