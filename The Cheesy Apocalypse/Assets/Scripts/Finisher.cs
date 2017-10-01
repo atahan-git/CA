@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Finisher : MonoBehaviour
 {
+    public int CurrentLevel;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && other.GetComponentInParent<Health>().haveCheese)
@@ -11,7 +13,7 @@ public class Finisher : MonoBehaviour
         }
         if (other.tag == "Enemy" && other.GetComponent<AI_Movement>().haveCheese)
         {
-            LevelSelector.s.SelectLevel(1);
+            LevelSelector.s.SelectLevel(CurrentLevel);
         }
     }
 }
