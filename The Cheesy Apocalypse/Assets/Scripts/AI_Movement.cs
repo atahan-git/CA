@@ -36,8 +36,10 @@ public class AI_Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(activeMode == AIMode.attackPlayer)
-			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (player.position - transform.position), 5 * Time.deltaTime);
+		if (activeMode == AIMode.attackPlayer) {
+			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (player.position - transform.position), 2 * Time.deltaTime);
+			GetComponent<AI_Shoot>().gunPos.rotation = Quaternion.Slerp (GetComponent<AI_Shoot>().gunPos.rotation, Quaternion.LookRotation (player.position - GetComponent<AI_Shoot>().gunPos.position), 20 * Time.deltaTime);
+		}
 		if (AIDelay > 0f)
 			AIDelay -= Time.deltaTime;
 
@@ -101,7 +103,9 @@ public class AI_Movement : MonoBehaviour {
 		}
 	}
 
+	bool isDead = false;
 	void Die (){
+		isDead = true;
 		Health.s.chaseCheese -= CheckCheeseChase;
 		Health.s.stopChase -= StopChase;
 
@@ -126,6 +130,8 @@ public class AI_Movement : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
+		if (isDead)
+			return;
 		if (collision.gameObject.CompareTag("Cheese"))
 		{
 			print ("got cheese");

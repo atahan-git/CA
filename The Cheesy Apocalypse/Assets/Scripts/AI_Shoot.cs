@@ -5,7 +5,8 @@ using UnityEngine;
 public class AI_Shoot : MonoBehaviour {
 
 	Transform barrelPos;
-	Transform gunPos;
+	[HideInInspector]
+	public Transform gunPos;
 
 
 	public enum ShootType {pistol, shotgun, machinegun, sniper, rocket};
@@ -20,6 +21,7 @@ public class AI_Shoot : MonoBehaviour {
 		//SpawnGun ();
 
 		barrelPos = transform.Find ("BarrelPos");
+		barrelPos.SetParent (gunPos);
 
 		Invoke ("Shoot", 1f);
 
@@ -68,17 +70,17 @@ public class AI_Shoot : MonoBehaviour {
 				range = 1f;
 				break;
 			case ShootType.shotgun:
-				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler (0, 30f, 0));
+				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler (0, 20f, 0));
 				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler (0, 0, 0));
-				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler (0, -30f, 0));
+				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler (0, -20f, 0));
 				reloadTime = 3f;
 				range = 1f;
 				gunId = 1;
 				break;
 			case ShootType.machinegun:
 				StartCoroutine (MachineGunShoot());
-				reloadTime = 4f;
-				range = 2f;
+				reloadTime = 3f;
+				range = 1f;
 				gunId = 2;
 				break;
 			case ShootType.sniper:

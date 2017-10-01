@@ -22,7 +22,7 @@ public class BulletScript : MonoBehaviour {
 		myCol = GetComponent<BoxCollider> ();
 		myTrail = GetComponentInChildren<TrailRenderer> ();
 		rend = GetComponentInChildren<Renderer> ();
-		rend.material.color = new Color (0.4f, 0.4f, 0.4f);
+		rend.material.color = new Color (0.2f, 0.2f, 0.2f);
 
 		myCol.enabled = false;
 		Invoke ("EnableCollider", 0.05f);
@@ -48,23 +48,25 @@ public class BulletScript : MonoBehaviour {
 
 	void OnCollisionEnter (Collision col){
 		if (isLethal) {
-			isLethal = false;
-			myTrail.enabled = false;
-			rend.material.color = new Color (0.6f, 0.6f, 0.6f);
+			if (col.gameObject.tag != "Bullet") {
+				isLethal = false;
+				myTrail.enabled = false;
+				rend.material.color = new Color (0.6f, 0.6f, 0.6f);
 
-			IDamageable myTarget = GetDamageable (col.collider.gameObject);
+				IDamageable myTarget = GetDamageable (col.collider.gameObject);
 
-			if (isRocket) {
-				Collider[] overlap = Physics.OverlapSphere (transform.position, rocketExpRange);
-				foreach (Collider _col in overlap) {
-					IDamageable _tar = GetDamageable (_col.gameObject);
-					if (_tar != null)
-						_tar.Damage ();
+				if (isRocket) {
+					Collider[] overlap = Physics.OverlapSphere (transform.position, rocketExpRange);
+					foreach (Collider _col in overlap) {
+						IDamageable _tar = GetDamageable (_col.gameObject);
+						if (_tar != null)
+							_tar.Damage ();
+					}
 				}
-			}
 
-			if (myTarget != null) {
-				myTarget.Damage ();
+				if (myTarget != null) {
+					myTarget.Damage ();
+				}
 			}
 		}
 	}
