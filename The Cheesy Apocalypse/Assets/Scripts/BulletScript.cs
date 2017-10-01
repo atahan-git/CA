@@ -10,14 +10,14 @@ public class BulletScript : MonoBehaviour {
 
 	TrailRenderer myTrail;
 
-	public bool isSnipar = false;
+    public float projectileSpeed = 600;
+
 	public bool isRocket = false;
 
 	public GameObject rocketExp;
 
 	float rocketExpRange = 2f;
 
-	// Use this for initialization
 	void Start () {
 		myCol = GetComponent<BoxCollider> ();
 		myTrail = GetComponentInChildren<TrailRenderer> ();
@@ -27,17 +27,13 @@ public class BulletScript : MonoBehaviour {
 		myCol.enabled = false;
 		Invoke ("EnableCollider", 0.05f);
 
-		if(!isSnipar)
-			GetComponent<Rigidbody> ().AddRelativeForce (0, 0, 600);
-		else
-			GetComponent<Rigidbody> ().AddRelativeForce (0, 0, 1500);
+	    GetComponent<Rigidbody> ().AddRelativeForce (0, 0, projectileSpeed);
 	}
 
 	void EnableCollider (){
 		myCol.enabled = true;
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate () {
 		if (isLethal) {
 			GetComponent<Rigidbody> ().AddForce (0f, Physics.gravity.y / 5f, 0f);

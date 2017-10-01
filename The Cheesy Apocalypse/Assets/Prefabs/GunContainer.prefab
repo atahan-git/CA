@@ -53,6 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: []
   bullet: {fileID: 1350787439349804, guid: ce67e9b86f1301d4e952d97ed9d38c36, type: 2}
+  shotgunBullet: {fileID: 1350787439349804, guid: d7b8fbada9beabb45b96abba3b28f734,
+    type: 2}
   sniperBullet: {fileID: 1275293289264690, guid: 20954f09079b58548a02889721a51225,
     type: 2}
   rocketBullet: {fileID: 1472545534452572, guid: b0964e7c851df1a40b52110ea8e5838a,

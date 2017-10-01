@@ -9,16 +9,12 @@ public class GunContainer : MonoBehaviour {
 	public GameObject[] container;
 
 	public GameObject bullet;
+    public GameObject shotgunBullet;
 	public GameObject sniperBullet;
 	public GameObject rocketBullet;
 
-	// Use this for initialization
-	void Awake () {
+	void Awake ()
+    {
 		s = this;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }

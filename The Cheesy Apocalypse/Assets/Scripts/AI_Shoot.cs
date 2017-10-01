@@ -69,11 +69,11 @@ public class AI_Shoot : MonoBehaviour {
 				range = 1f;
 				break;
 			case ShootType.shotgun:
-				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, 10f, 0));
-				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, 0, 0));
-				Instantiate (GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, -10f, 0));
-                Instantiate(GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, 20f, 0));
-                Instantiate(GunContainer.s.bullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, -20f, 0));
+				Instantiate (GunContainer.s.shotgunBullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, 5f, 0));
+				Instantiate (GunContainer.s.shotgunBullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, 0, 0));
+				Instantiate (GunContainer.s.shotgunBullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, -5f, 0));
+                Instantiate(GunContainer.s.shotgunBullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, 10f, 0));
+                Instantiate(GunContainer.s.shotgunBullet, barrelPos.position, barrelPos.rotation * Quaternion.Euler(0, -10f, 0));
                 reloadTime = 3f;
 				range = 1f;
 				gunId = 1;
