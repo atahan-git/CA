@@ -80,8 +80,8 @@ public class AI_Shoot : MonoBehaviour {
 				break;
 			case ShootType.machinegun:
 				StartCoroutine (MachineGunShoot());
-				reloadTime = 3f;
-				range = 2f;
+				reloadTime = 5f;
+				range = 3f;
 				gunId = 2;
 				break;
 			case ShootType.sniper:
@@ -104,9 +104,9 @@ public class AI_Shoot : MonoBehaviour {
 	}
 
 	IEnumerator MachineGunShoot(){
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
-            Instantiate(GunContainer.s.bullet, barrelPos.position, barrelPos.rotation);
+            Instantiate(GunContainer.s.machinegunBullet, barrelPos.position, barrelPos.rotation);
             yield return new WaitForSeconds(Random.Range(0.1f, 0.12f));
         }
 	}

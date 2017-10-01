@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 54731052632514154}
   - component: {fileID: 114237338178993140}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Machinegun Bulet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,8 +110,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350787439349804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.951, y: 2.36, z: -4.007}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.3924813, y: 0.095832646, z: -3.3271444}
+  m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_Children:
   - {fileID: 4847626169173590}
   m_Father: {fileID: 0}
@@ -300,6 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc838ab5012abb458a4c71b3318d1bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 600
+  projectileSpeed: 700
   isRocket: 0
   rocketExp: {fileID: 0}

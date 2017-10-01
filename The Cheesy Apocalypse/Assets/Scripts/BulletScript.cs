@@ -22,7 +22,7 @@ public class BulletScript : MonoBehaviour {
 		myCol = GetComponent<BoxCollider> ();
 		myTrail = GetComponentInChildren<TrailRenderer> ();
 		rend = GetComponentInChildren<Renderer> ();
-		rend.material.color = new Color (0.2f, 0.2f, 0.2f);
+		//rend.material.color = new Color (0.2f, 0.2f, 0.2f);
 
 		myCol.enabled = false;
 		Invoke ("EnableCollider", 0.05f);
@@ -47,7 +47,7 @@ public class BulletScript : MonoBehaviour {
 			if (col.gameObject.tag != "Bullet") {
 				isLethal = false;
 				myTrail.enabled = false;
-				rend.material.color = new Color (0.6f, 0.6f, 0.6f);
+				//rend.material.color = new Color (0.6f, 0.6f, 0.6f);
 
 				IDamageable myTarget = GetDamageable (col.collider.gameObject);
 

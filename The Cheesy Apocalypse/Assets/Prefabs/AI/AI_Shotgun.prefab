@@ -1650,7 +1650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heatlhPoints: 1
-  deathEffect: {fileID: 1225468296341162, guid: 9f883cbcbfff16e499fc04ea0174e151,
+  deathEffect: {fileID: 1225468296341162, guid: b03b5416b0b2cb141ae963975c325985,
     type: 2}
 --- !u!114 &114807577945674452
 MonoBehaviour:

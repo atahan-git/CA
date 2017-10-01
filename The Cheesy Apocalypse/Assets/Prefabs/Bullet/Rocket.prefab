@@ -471,4 +471,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 600
   isRocket: 1
-  rocketExp: {fileID: 0}
+  rocketExp: {fileID: 1225468296341162, guid: 0826fc83f79f63045ac5501710b98f0e, type: 2}

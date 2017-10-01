@@ -1774,7 +1774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heatlhPoints: 1
-  deathEffect: {fileID: 1225468296341162, guid: 9f883cbcbfff16e499fc04ea0174e151,
+  deathEffect: {fileID: 1225468296341162, guid: a075d891d27ee9c4bb3972a2c7f09e0f,
     type: 2}
 --- !u!114 &114724345596287240
 MonoBehaviour:
