@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8e532b8aba5d333428bcc23ccd8d67a5
-timeCreated: 1506763457
+guid: e1dbbb0288d206e48ace6718e3ce9825
+timeCreated: 1506856119
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube
-    6400000: //RootNode
+    4300000: Cylinder
   materials:
     importMaterials: 1
     materialName: 0
@@ -40,7 +39,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 0.3
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
