@@ -4161,6 +4161,22 @@ Transform:
   m_PrefabParentObject: {fileID: 4030140715620564, guid: 902b18551dae4454a9cbc750cc6e358f,
     type: 2}
   m_PrefabInternal: {fileID: 718602966}
+--- !u!1 &724278953 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1683270755765666, guid: 6f173fbe33e698d4d9ac7b3cd1f32499,
+    type: 2}
+  m_PrefabInternal: {fileID: 1684326810}
+--- !u!114 &724278957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 724278953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f091c522e2a4534c93705b839b75ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &727079236
 GameObject:
   m_ObjectHideFlags: 0
@@ -4231,16 +4247,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Arrow keys or W,A,S,D to move
-
-    Space to jump
-
-    R to restart
-
-    P or Esc to pause
-
-
-    hint: bears can shoot each other'
+  m_Text: "Arrow keys or W,A,S,D to move\nSpace to jump\nR to restart\nP or Esc to
+    pause\n\nhint: bears can shoot each other\nhint 2: you have to find \nthe checkout
+    yourself"
 --- !u!222 &727079239
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7248,7 +7257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1308144730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8806,16 +8815,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Arrow keys or W,A,S,D to move
-
-    Space to jump
-
-    R to restart
-
-    P or Esc to pause
-
-
-    hint: bears can shoot each other'
+  m_Text: "Arrow keys or W,A,S,D to move\nSpace to jump\nR to restart\nP or Esc to
+    pause\n\nhint: bears can shoot each other\nhint 2: you have to find \nthe checkout
+    yourself"
 --- !u!222 &1674445585
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8866,6 +8868,10 @@ Prefab:
     - target: {fileID: 4403829735876142, guid: 6f173fbe33e698d4d9ac7b3cd1f32499, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683270755765666, guid: 6f173fbe33e698d4d9ac7b3cd1f32499, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f173fbe33e698d4d9ac7b3cd1f32499, type: 2}

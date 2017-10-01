@@ -10,6 +10,7 @@ public class BeginningAnim : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		ActivateScreen (curOne);
+		Time.timeScale = 0;
 	}
 	
 	// Update is called once per frame
@@ -29,7 +30,9 @@ public class BeginningAnim : MonoBehaviour {
 		curOne++;
 		if (curOne < screens.Length)
 			ActivateScreen (curOne);
-		else
+		else {
 			this.gameObject.SetActive (false);
+			Time.timeScale = 1;
+		}
 	}
 }
