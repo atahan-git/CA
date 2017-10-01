@@ -5,7 +5,8 @@ using UnityEngine;
 public class AI_Shoot : MonoBehaviour {
 
 	Transform barrelPos;
-	Transform gunPos;
+    [HideInInspector]
+	public Transform gunPos;
 
 
 	public enum ShootType {pistol, shotgun, machinegun, sniper, rocket};
