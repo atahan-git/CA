@@ -48,7 +48,7 @@ public class AI_Movement : MonoBehaviour {
 		if (AIDelay > 0f)
 			AIDelay -= Time.deltaTime;
 
-		print (target.position);
+		//print (target.position);
 		//print (activeMode);
 	}
 

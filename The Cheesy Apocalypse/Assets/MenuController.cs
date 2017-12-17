@@ -26,7 +26,7 @@ public class MenuController : MonoBehaviour {
 		menu1.SetActive (false);
 		bgimage.color = startcolor;
 
-		for (int i = 1; i <= 5; i++) {
+		for (int i = 1; i <= 4; i++) {
 			if (PlayerPrefs.GetInt (i.ToString (), 0) == 0) {
 				if(i < levelButtons.Length)
 				levelButtons [i].interactable = false;

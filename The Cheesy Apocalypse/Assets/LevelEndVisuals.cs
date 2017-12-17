@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelEndVisuals : MonoBehaviour {
 
@@ -40,7 +41,7 @@ public class LevelEndVisuals : MonoBehaviour {
 			return;
 		isLocked = true;
 
-		GameObject.FindGameObjectWithTag ("Player").GetComponent<RigidFPC> ().enabled = false;
+		GameObject.FindGameObjectWithTag ("Player").transform.root.GetComponent<RigidFPC> ().enabled = false;
 		Time.timeScale = 0;
 
 		winScreen.SetActive (false);
@@ -49,5 +50,19 @@ public class LevelEndVisuals : MonoBehaviour {
 
 	public void BackToMenu (){
 		LevelSelector.s.SelectLevel (0);
+	}
+
+	public GameObject oldTxt;
+	public GameObject newTxt;
+	public Button nb;
+	public void NextLevel (){
+		if (UnityEngine.SceneManagement.SceneManager.GetActiveScene ().buildIndex < 4) {
+			Time.timeScale = 1;
+			LevelSelector.s.SelectLevel (UnityEngine.SceneManagement.SceneManager.GetActiveScene ().buildIndex + 1);
+		} else {
+			oldTxt.SetActive (false);
+			newTxt.SetActive (true);
+			nb.interactable = false;
+		}
 	}
 }
